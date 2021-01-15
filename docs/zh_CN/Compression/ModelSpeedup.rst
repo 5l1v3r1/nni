@@ -37,7 +37,7 @@
    out = model(dummy_input)
    print('elapsed time: ', time.time() - start)
 
-完整示例参考 :githublink:`这里 <examples/model_compress/model_speedup.py>`。
+For complete examples please refer to :githublink:`the code <examples/model_compress/pruning/model_speedup.py>`
 
 注意：当前支持 PyTorch 1.3.1 或更高版本。
 
@@ -51,7 +51,7 @@
 示例的加速结果
 ---------------------------
 
-实验代码在 :githublink:`这里 <examples/model_compress/model_speedup.py>`。
+The code of these experiments can be found :githublink:`here <examples/model_compress/pruning/model_speedup.py>`.
 
 slim Pruner 示例
 ^^^^^^^^^^^^^^^^^^^
@@ -162,7 +162,7 @@ APoZ Pruner 示例
 在一块 V100 GPU 上
 输入张量: ``torch.randn(64, 3, 32, 32)``
 
-.. list-table::
+C list-table::
    :header-rows: 1
    :widths: auto
 
@@ -188,3 +188,13 @@ APoZ Pruner 示例
      - 0.12421
      - 0.087113
 
+
+SimulatedAnnealing pruner example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this experiment, we use SimulatedAnnealing pruner to prune the resnet18 on the cifar10 dataset.
+We measure the latencies and accuracies of the pruned model under different sparsity ratios, as shown in the following figure.
+The latency is measured on one V100 GPU and the input tensor is  ``torch.randn(128, 3, 32, 32)``.
+
+
+.. image:: ../../img/SA_latency_accuracy.png

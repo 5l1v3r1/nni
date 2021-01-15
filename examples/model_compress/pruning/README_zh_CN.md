@@ -3,7 +3,7 @@
 以 PyTorch 剪枝为例：
 
 ```bash
-python main_torch_pruner.py
+python model_prune_torch.py
 ```
 
 此示例使用了 AGP Pruner。 初始化 Pruner 需要通过以下两种方式来提供配置。

@@ -252,7 +252,7 @@ maxExecDuration
 
 可选。 字符串。 默认值：999d。
 
-**maxExecDuration** 指定实验的最大执行时间。 时间单位为 {**s**\ ,** m**\ ,** h**\ ,** d**\ }，其分别表示 {*秒*\ , *分钟*\ , *小时*\ , *天*\ }。
+**maxExecDuration** 指定实验的最大执行时间。 The unit of the time is {**s**\ **m**\ , **h**\ , **d**\ }, which means {*seconds*\ , *minutes*\ , *hours*\ , *days*\ }.
 
 注意：maxExecDuration 设置的是 Experiment 执行的时间，不是 Trial 的。 如果 Experiment 达到了设置的最大时间，Experiment 不会停止，但不会再启动新的 Trial 作业。
 
@@ -282,20 +282,20 @@ trainingServicePlatform
 
 必填。 字符串。
 
-指定运行 Experiment 的平台，包括 **local**\ ,** remote**\ ,** pai**\ ,** kubeflow**\ ,** frameworkcontroller**。
+Specifies the platform to run the experiment, including **local**\ , **remote**\ , **pai**\ , **kubeflow**\ , **frameworkcontroller**.
 
 
 * 
   **local** 在本机的 ubuntu 上运行 Experiment。
 
 * 
-  **remote** 将任务提交到远程的 ubuntu 上，必须用 **machineList** 来指定远程的 SSH 连接信息。
+  **remote** submit trial jobs to remote ubuntu machines, and **machineList** field should be filed in order to set up SSH connection to remote machine.
 
 * 
   **pai**  提交到微软开源的 `OpenPAI <https://github.com/Microsoft/pai>`__ 上。 更多 OpenPAI 配置，参考 `PAI 模式指南 <../TrainingService/PaiMode.rst>`__。
 
 * 
-  **kubeflow** 提交任务到 `kubeflow <https://www.kubeflow.org/docs/about/kubeflow/>`__\ , NNI 支持基于 kubernetes 的 kubeflow，以及 `azure kubernetes <https://azure.microsoft.com/zh-cn/services/kubernetes-service/>`__。 详情参考 `Kubeflow Docs <../TrainingService/KubeflowMode.rst>`__。
+  **kubeflow** 提交任务到 `kubeflow <https://www.kubeflow.org/docs/about/kubeflow/>`__\ , NNI 支持基于 kubernetes 的 kubeflow，以及 `azure kubernetes <https://azure.microsoft.com/en-us/services/kubernetes-service/>`__。 详情参考 `Kubeflow Docs <../TrainingService/KubeflowMode.rst>`__。
 
 * 
   **adl** 提交任务到 `AdaptDL <https://www.kubeflow.org/docs/about/kubeflow/>`__\ , NNI 支持 Kubernetes 集群上的 AdaptDL。 详情参考 `AdaptDL Docs <../TrainingService/AdaptDLMode.rst>`__。
@@ -363,7 +363,7 @@ tuner
 
 必填。
 
-指定了 Experiment 的 Tuner 算法。有两种方法可设置 Tuner。 一种方法是使用 NNI SDK 提供的内置 Tuner，在这种情况下，需要设置 **builtinTunerName** 和 **classArgs**。 另一种方法，是使用用户自定义的 Tuner，需要设置 **codeDirectory**\ ,** classFileName**\ ,** className** 和 **classArgs**。 *必须选择其中的一种方式。*
+指定了 Experiment 的 Tuner 算法。有两种方法可设置 Tuner。 一种方法是使用 NNI SDK 提供的内置 Tuner，在这种情况下，需要设置 **builtinTunerName** 和 **classArgs**。 Another way is to use users' own tuner file, in which case **codeDirectory**\ , **classFileName**\ , **className** and **classArgs** are needed. *必须选择其中的一种方式。*
 
 builtinTunerName
 ^^^^^^^^^^^^^^^^
@@ -417,7 +417,7 @@ includeIntermediateResults
 assessor
 ^^^^^^^^
 
-指定 Assessor 算法以运行 Experiment。 与 Tuner 类似，有两种设置 Assessor 的方法。 一种方法是使用 NNI SDK 提供的 Assessor。 必填字段：builtinAssessorName 和 classArgs。 另一种方法，是使用用户自定义的 Assessor，需要设置 **codeDirectory**\ ,** classFileName**\ ,** className** 和 **classArgs**。 *必须选择其中的一种方式。*
+指定 Assessor 算法以运行 Experiment。 与 Tuner 类似，有两种设置 Assessor 的方法。 一种方法是使用 NNI SDK 提供的 Assessor。 必填字段：builtinAssessorName 和 classArgs。 Another way is to use users' own assessor file, and users need to set **codeDirectory**\ , **classFileName**\ , **className** and **classArgs**. *必须选择其中的一种方式。*
 
 默认情况下，未启用任何 Assessor。
 
@@ -461,14 +461,14 @@ Advisor
 
 可选。
 
-指定 Experiment 中的 Advisor 算法。 与 Tuner 和 Assessor 类似，有两种指定 Advisor 的方法。 一种方法是使用 SDK 提供的 Advisor ，需要设置 **builtinAdvisorName** 和 **classArgs**。 另一种方法，是使用用户自定义的 Advisor ，需要设置 **codeDirectory**\ ,** classFileName**\ ,** className** 和 **classArgs**。
+指定 Experiment 中的 Advisor 算法。 与 Tuner 和 Assessor 类似，有两种指定 Advisor 的方法。 一种方法是使用 SDK 提供的 Advisor ，需要设置 **builtinAdvisorName** 和 **classArgs**。 Another way is to use users' own advisor file, and need to set **codeDirectory**\ , **classFileName**\ , **className** and **classArgs**.
 
 启用 Advisor 后，将忽略 Tuner 和 Advisor 的设置。
 
 builtinAdvisorName
 ^^^^^^^^^^^^^^^^^^
 
-指定内置 Advisor 的名称。 NNI SDK 提供了 `BOHB <../Tuner/BohbAdvisor.rst>`__ 和 `Hyperband <../Tuner/HyperbandAdvisor.rst>`__ 。
+指定内置 Advisor 的名称。 NNI sdk provides `BOHB <../Tuner/BohbAdvisor.rst>`__ and `Hyperband <../Tuner/HyperbandAdvisor.rst>`__.
 
 codeDir
 ^^^^^^^
@@ -552,6 +552,8 @@ trial
 * 
   **portList**\ : ``label``\ , ``beginAt``\ , ``portNumber`` 的键值对 list。 参考 `OpenPAI 教程 <https://github.com/microsoft/pai/blob/master/docs/job_tutorial.rst>`__ 。
 
+.. cannot find `Reference <https://github.com/microsoft/pai/blob/2ea69b45faa018662bc164ed7733f6fdbb4c42b3/docs/faq.rst#q-how-to-use-private-docker-registry-job-image-when-submitting-an-openpai-job>`__  and `job tutorial of PAI <https://github.com/microsoft/pai/blob/master/docs/job_tutorial.rst>`__ 
+
 在 Kubeflow 模式下，需要以下键。
 
 
@@ -607,7 +609,7 @@ localConfig
 
 本机模式下可选。 键值对。
 
-仅在 **trainingServicePlatform** 设为 **local** 时有效，否则，配置文件中不应该有 **localConfig** 部分。
+Only applicable if **trainingServicePlatform** is set to ``local``\ , otherwise there should not be **localConfig** section in configuration file.
 
 gpuIndices
 ^^^^^^^^^^
@@ -705,7 +707,7 @@ preCommand
 
 可选。 字符串。
 
-在远程机器执行其他命令之前，将执行预命令。 用户可以通过设置 **preCommand**，在远程机器上配置实验环境。 如果需要执行多个命令，请使用 ``&&`` 连接它们，例如 ``preCommand: command1 && command2&&…``。
+在远程机器执行其他命令之前，将执行预命令。 用户可以通过设置**preCommand**，在远程机器上配置实验环境。 如果需要执行多个命令，请使用 ``&&`` 连接它们，例如 ``preCommand: command1 && command2&&…\ ``。
 
 **注意**：因为 ``preCommand`` 每次都会在其他命令之前执行，所以强烈建议不要设置 **preCommand** 来对系统进行更改，即 ``mkdir`` or ``touch``。
 
@@ -755,7 +757,7 @@ keyVault
 
 如果使用 Azure 存储，则必需。 键值对。
 
-将 **keyVault** 设置为 Azure 存储帐户的私钥。 参考：https://docs.microsoft.com/zh-cn/azure/key-vault/key-vault-manage-with-cli2 。
+将 **keyVault** 设置为 Azure 存储帐户的私钥。 Refer to `the doc <https://docs.microsoft.com/en-us/azure/key-vault/key-vault-manage-with-cli2>`__ .
 
 
 * 

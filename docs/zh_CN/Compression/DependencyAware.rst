@@ -3,7 +3,7 @@
 
 目前，我们有几种针对卷积层的滤波剪枝算法，分别为：FPGM Pruner, L1Filter Pruner, L2Filter Pruner, Activation APoZ Rank Filter Pruner, Activation Mean Rank Filter Pruner, Taylor FO On Weight Pruner。 在这些滤波器剪枝算法中，剪枝器将分别对每个卷积层进行剪枝。 在裁剪卷积层时，算法会根据一些特定的规则（如l1-norm）量化每个滤波器的重要性，并裁剪不太重要的滤波器。
 
-就像 `dependency analysis utils <./CompressionUtils.md>`__ 显示，如果将两个卷积层（conv1，conv2）的输出通道相加，这两个卷积层之间将具有通道依赖关系（更多详细信息参见 `Compression Utils <./CompressionUtils.rst>`__\ )。 以下图为例。
+As `dependency analysis utils <./CompressionUtils.rst>`__ shows, if the output channels of two convolutional layers(conv1, conv2) are added together, then these two conv layers have channel dependency with each other(more details please see `Compression Utils <./CompressionUtils.rst>`__\ ). 以下图为例。
 
 
 .. image:: ../../img/mask_conflict.jpg
@@ -46,7 +46,7 @@
 
    from nni.algorithms.compression.pytorch.pruning import L1FilterPruner
    config_list = [{ 'sparsity': 0.8, 'op_types': ['Conv2d'] }]
-   # dummy_input 对于依赖感知模式是必需的
+   ＃dummy_input 对于依赖感知模式是必需的
    dummy_input = torch.ones(1, 3, 224, 224).cuda()
    pruner = L1FilterPruner(model, config_list, dependency_aware=True, dummy_input=dummy_input)
    # 对于 L2FilterPruner
@@ -61,7 +61,6 @@
    # pruner = TaylorFOWeightFilterPruner(model, config_list, statistics_batch_num=1, dependency_aware=True, dummy_input=dummy_input)
 
    pruner.compress()
-
 
 评估
 ----------

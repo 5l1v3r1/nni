@@ -113,7 +113,7 @@ Slim Pruner 的用户配置
 复现实验
 ^^^^^^^^^^^^^^^^^^^^^
 
-我们复现了 `Learning Efficient Convolutional Networks through Network Slimming <https://arxiv.org/pdf/1708.06519.pdf>`__ 中的一项实验。根据论文，对 CIFAR-10 上的 **VGGNet** 剪除了 ``70%`` 的通道，即约 ``88.5%`` 的参数。 我们的实验结果如下：
+We implemented one of the experiments in `Learning Efficient Convolutional Networks through Network Slimming <https://arxiv.org/pdf/1708.06519.pdf>`__\ , we pruned ``70%`` channels in the **VGGNet** for CIFAR-10 in the paper, in which ``88.5%`` parameters are pruned. 我们的实验结果如下：
 
 .. list-table::
    :header-rows: 1
@@ -133,7 +133,7 @@ Slim Pruner 的用户配置
      - 88.5%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/>`
+The experiments code can be found at :githublink:`examples/model_compress/pruning/reproduced/slim_torch_cifar10.py <examples/model_compress/pruning/reproduced/slim_torch_cifar10.py>`
 
 ----
 
@@ -182,7 +182,7 @@ FPGM Pruner 的用户配置
 L1Filter Pruner
 ---------------
 
-这是一种一次性的 Pruner，由 `PRUNING FILTERS FOR EFFICIENT CONVNETS <https://arxiv.org/abs/1608.08710>`__ 提出，作者 Hao Li, Asim Kadav, Igor Durdanovic, Hanan Samet 和 Hans Peter Graf。
+This is an one-shot pruner, In `PRUNING FILTERS FOR EFFICIENT CONVNETS <https://arxiv.org/abs/1608.08710>`__\ , authors Hao Li, Asim Kadav, Igor Durdanovic, Hanan Samet and Hans Peter Graf.
 
 
 .. image:: ../../img/l1filter_pruner.png
@@ -232,7 +232,7 @@ L1Filter Pruner 的用户配置
 复现实验
 ^^^^^^^^^^^^^^^^^^^^^
 
-我们通过 **L1FilterPruner** 实现了 `PRUNING FILTERS FOR EFFICIENT CONVNETS <https://arxiv.org/abs/1608.08710>`__ 中的一项实验， 即论文中，在 CIFAR-10 数据集上修剪 **VGG-16** 的 **VGG-16-pruned-A**，其中大约剪除了 ``64%`` 的参数。 实验结果如下：
+We implemented one of the experiments in `PRUNING FILTERS FOR EFFICIENT CONVNETS <https://arxiv.org/abs/1608.08710>`__ with **L1FilterPruner**\ , we pruned **VGG-16** for CIFAR-10 to **VGG-16-pruned-A** in the paper, in which ``64%`` parameters are pruned. 实验结果如下：
 
 .. list-table::
    :header-rows: 1
@@ -252,7 +252,7 @@ L1Filter Pruner 的用户配置
      - 64.0%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/>`
+The experiments code can be found at :githublink:`examples/model_compress/pruning/reproduced/L1_torch_cifar10.py <examples/model_compress/pruning/reproduced/L1_torch_cifar10.py>`
 
 ----
 
@@ -316,7 +316,7 @@ PyTorch 代码
 
 注意：ActivationAPoZRankFilterPruner 用于修剪深度神经网络中的卷积层，因此 ``op_types`` 字段仅支持卷积层。
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/model_prune_torch.py>` for more information.
 
 ActivationAPoZRankFilterPruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -331,7 +331,7 @@ ActivationMeanRankFilter Pruner
 -------------------------------
 
 ActivationMeanRankFilterPruner 是从卷积层激活的输出，用最小的重要性标准 
-``平均激活`` 来修剪滤波器，来达到预设的网络稀疏度。 剪枝标准 ``平均激活``，在论文 `Pruning Convolutional Neural Networks for Resource Efficient Inference <https://arxiv.org/abs/1611.06440>`__ 的 2.2 节中进行了介绍。 本文中提到的其他修剪标准将在以后的版本中支持。
+``平均激活`` 来修剪滤波器，来达到预设的网络稀疏度。 The pruning criterion ``mean activation`` is explained in section 2.2 of the paper `Pruning Convolutional Neural Networks for Resource Efficient Inference <https://arxiv.org/abs/1611.06440>`__. 本文中提到的其他修剪标准将在以后的版本中支持。
 
 我们还为这个 Pruner 提供了一个依赖感知模式，以更好地提高修剪的速度。 请参考 `dependency-aware <./DependencyAware.rst>`__ 获取更多信息。
 
@@ -352,7 +352,7 @@ PyTorch 代码
 
 注意：ActivationMeanRankFilterPruner 用于修剪深度神经网络中的卷积层，因此 ``op_types`` 字段仅支持卷积层。
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/model_prune_torch.py>` for more information.
 
 ActivationMeanRankFilterPruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -472,7 +472,7 @@ PyTorch 代码
 
    pruner.update_epoch(epoch)
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/model_prune_torch.py>` for more information.
 
 AGP Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -512,7 +512,7 @@ PyTorch 代码
    pruner = NetAdaptPruner(model, config_list, short_term_fine_tuner=short_term_fine_tuner, evaluator=evaluator,base_algo='l1', experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/auto_pruners_torch.py>` for more information.
 
 NetAdapt Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -553,7 +553,7 @@ PyTorch 代码
    pruner = SimulatedAnnealingPruner(model, config_list, evaluator=evaluator, base_algo='l1', cool_down_rate=0.9, experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/auto_pruners_torch.py>` for more information.
 
 SimulatedAnnealing Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -583,7 +583,7 @@ PyTorch 代码
 
 .. code-block:: python
 
-   from nni.algorithms.compression.pytorch.pruning import ADMMPruner
+   from nni.algorithms.compression.pytorch.pruning import AutoCompressPruner
    config_list = [{
            'sparsity': 0.5,
            'op_types': ['Conv2d']
@@ -594,7 +594,7 @@ PyTorch 代码
                cool_down_rate=0.9, admm_num_iterations=30, admm_training_epochs=5, experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/auto_pruners_torch.py>` for more information.
 
 AutoCompress Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -632,9 +632,9 @@ PyTorch 代码
    pruner = AMCPruner(model, config_list, evaluator, val_loader, flops_ratio=0.5)
    pruner.compress()
 
-你可以参考 :githublink:`示例 <examples/model_compress/amc/>` 获取更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/amc/>` for more information.
 
-AutoCompress Pruner 的用户配置
+User configuration for AMC Pruner
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PyTorch**
@@ -660,7 +660,7 @@ AutoCompress Pruner 的用户配置
      - 50%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/amc/>`。
+The experiments code can be found at :githublink:`examples/model_compress/pruning/ <examples/model_compress/pruning/amc/>`
 
 ADMM Pruner
 -----------
@@ -694,7 +694,7 @@ PyTorch 代码
    pruner = ADMMPruner(model, config_list, trainer=trainer, num_iterations=30, epochs=5)
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+You can view :githublink:`example <examples/model_compress/pruning/auto_pruners_torch.py>` for more information.
 
 ADMM Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -755,7 +755,7 @@ LotteryTicket Pruner 的用户配置
 复现实验
 ^^^^^^^^^^^^^^^^^^^^^
 
-在重现时，在 MNIST 使用了与论文相同的配置。 实验代码在 :githublink:`这里 <examples/model_compress/lottery_torch_mnist_fc.py>`。 在次实验中，修剪了10次，在每次修剪后，训练了 50 个 epoch。
+在重现时，在 MNIST 使用了与论文相同的配置。 The code can be referred :githublink:`here <examples/model_compress/pruning/reproduced/lottery_torch_mnist_fc.py>`. 在次实验中，修剪了10次，在每次修剪后，训练了 50 个 epoch。
 
 
 .. image:: ../../img/lottery_ticket_mnist_fc.png

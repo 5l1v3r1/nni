@@ -1,18 +1,82 @@
 Web 界面
-===============
+=====
+
+Experiments managerment
+-----------------------
+
+Click the tab ``All experiments`` on the nav bar.
+
+.. image:: ../../img/webui-img/managerExperimentList/experimentListNav.png
+   :target: ../../img/webui-img/managerExperimentList/experimentListNav.png
+   :alt: ExperimentList nav
+
+
+
+* On the ``All experiments`` page, you can see all the experiments on your machine. 
+
+.. image:: ../../img/webui-img/managerExperimentList/expList.png
+   :target: ../../img/webui-img/managerExperimentList/expList.png
+   :alt: Experiments list
+
+
+
+* When you want to see more details about an experiment you could click the trial id, look that:
+
+.. image:: ../../img/webui-img/managerExperimentList/toAnotherExp.png
+   :target: ../../img/webui-img/managerExperimentList/toAnotherExp.png
+   :alt: See this experiment detail
+
+
+
+* If has many experiments on the table, you can use the ``filter`` button.
+
+.. image:: ../../img/webui-img/managerExperimentList/expFilter.png
+   :target: ../../img/webui-img/managerExperimentList/expFilter.png
+   :alt: filter button
+
+
 
 查看概要页面
 -----------------
 
-点击标签 "Overview"。
+Click the tab ``Overview``.
 
 
-* 在 Overview 标签上，可看到 Experiment Trial 的概况、搜索空间、以及最好的 Trial 结果。 如果想查看实验配置和搜索空间，点击右边的按钮 "Config" 和 "Search space"。
+* On the overview tab, you can see the experiment information and status and the performance of ``top trials``.
 
 
 .. image:: ../../img/webui-img/full-oview.png
    :target: ../../img/webui-img/full-oview.png
-   :alt: 
+   :alt: overview
+
+
+
+* If you want to see experiment search space and config, please click the right button ``Search space`` and ``Config`` (when you hover on this button).
+
+   1. Search space file:
+
+
+      .. image:: ../../img/webui-img/searchSpace.png
+         :target: ../../img/webui-img/searchSpace.png
+         :alt: searchSpace
+
+
+
+   2. Config file:
+
+
+      .. image:: ../../img/webui-img/config.png
+         :target: ../../img/webui-img/config.png
+         :alt: config
+
+
+
+* You can view and download ``nni-manager/dispatcher log files`` on here.
+
+
+.. image:: ../../img/webui-img/review-log.png
+   :target: ../../img/webui-img/review-log.png
+   :alt: logfile
 
 
 
@@ -21,100 +85,100 @@ Web 界面
 
 .. image:: ../../img/webui-img/refresh-interval.png
    :target: ../../img/webui-img/refresh-interval.png
-   :alt: 
+   :alt: refresh
 
 
 
-* "download" 按钮支持查看并下载 Experiment 结果，以及 NNI Manager、Dispatcher 的日志文件。
+
+* You can review and download the experiment results(``experiment config``, ``trial message`` and ``intermeidate metrics``) when you click the button ``Experiment summary``.
 
 
-.. image:: ../../img/webui-img/download.png
-   :target: ../../img/webui-img/download.png
-   :alt: 
+.. image:: ../../img/webui-img/summary.png
+   :target: ../../img/webui-img/summary.png
+   :alt: summary
 
 
 
-* 在这里修改实验配置（例如 maxExecDuration, maxTrialNum 和 trial concurrency）。
+* You can change some experiment configurations such as ``maxExecDuration``, ``maxTrialNum`` and ``trial concurrency`` on here.
 
 
 .. image:: ../../img/webui-img/edit-experiment-param.png
    :target: ../../img/webui-img/edit-experiment-param.png
-   :alt: 
+   :alt: editExperimentParams
 
 
 
-* 如果实验的状态为错误，可以单击错误框中的感叹号来查看日志消息。
+* You can click the icon to see specific error message and ``nni-manager/dispatcher log files`` by clicking ``Learn about`` link.
 
 
-.. image:: ../../img/webui-img/log-error.png
-   :target: ../../img/webui-img/log-error.png
-   :alt: 
-
-
-.. image:: ../../img/webui-img/review-log.png
-   :target: ../../img/webui-img/review-log.png
-   :alt: 
+.. image:: ../../img/webui-img/experimentError.png
+   :target: ../../img/webui-img/experimentError.png
+   :alt: experimentError
 
 
 
-* 可点击 "About" 查看版本信息和反馈任何问题。
+
+* You can click ``About`` to see the version and report any questions.
 
 查看任务默认指标
 -----------------------
 
 
-* 点击 "Default Metric" 来查看所有 Trial 的点图。 悬停鼠标来查看默认指标和搜索空间信息。
+* Click the tab ``Default Metric`` to see the point graph of all trials. 悬停鼠标来查看默认指标和搜索空间信息。
 
 
 .. image:: ../../img/webui-img/default-metric.png
    :target: ../../img/webui-img/default-metric.png
-   :alt: 
+   :alt: defaultMetricGraph
 
 
 
-* 点击开关 "optimization curve" 来查看 Experiment 的优化曲线。
+* Click the switch named ``optimization curve`` to see the experiment's optimization curve.
 
 
 .. image:: ../../img/webui-img/best-curve.png
    :target: ../../img/webui-img/best-curve.png
-   :alt: 
+   :alt: bestCurveGraph
 
 
 查看超参
 --------------------
 
-点击 "Hyper Parameter" 标签查看图像。
+Click the tab ``Hyper Parameter`` to see the parallel graph.
 
 
-* 可以添加/删除轴，或者拖动以交换图表上的轴。
+* You can ``add/remove`` axes and drag to swap axes on the chart.
 * 可选择百分比查看最好的 Trial。
 
 
 .. image:: ../../img/webui-img/hyperPara.png
    :target: ../../img/webui-img/hyperPara.png
-   :alt: 
+   :alt: hyperParameterGraph
+
 
 
 查看 Trial 运行时间
 -------------------
 
-点击 "Trial Duration" 标签来查看柱状图。
+Click the tab ``Trial Duration`` to see the bar graph.
 
 
 .. image:: ../../img/webui-img/trial_duration.png
    :target: ../../img/webui-img/trial_duration.png
-   :alt: 
+   :alt: trialDurationGraph
+
 
 
 查看 Trial 中间结果
 ------------------------------------
 
-单击 "Intermediate Result" 标签查看折线图。
+Click the tab ``Intermediate Result`` to see the line graph.
 
 
 .. image:: ../../img/webui-img/trials_intermeidate.png
    :target: ../../img/webui-img/trials_intermeidate.png
-   :alt: 
+   :alt: trialIntermediateGraph
+
 
 
 Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解一些 Trial 的趋势，可以为中间结果图设置过滤。
@@ -124,13 +188,14 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/filter-intermediate.png
    :target: ../../img/webui-img/filter-intermediate.png
-   :alt: 
+   :alt: filterIntermediateGraph
+
 
 
 查看 Trial 状态
 ------------------
 
-点击 "Trials Detail" 标签查看所有 Trial 的状态。 特别是：
+Click the tab ``Trials Detail`` to see the status of all trials. 特别是：
 
 
 * Trial 详情：Trial 的 id，持续时间，开始时间，结束时间，状态，精度和搜索空间文件。
@@ -138,30 +203,30 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/detail-local.png
    :target: ../../img/webui-img/detail-local.png
-   :alt: 
+   :alt: detailLocalImage
 
 
 
-* "Add column" 按钮可选择在表格中显示的列。 如果 Experiment 的最终结果是 dict，则可以在表格中查看其它键。 可选择 "Intermediate count" 列来查看 Trial 进度。
+* The button named ``Add column`` can select which column to show on the table. 如果 Experiment 的最终结果是 dict，则可以在表格中查看其它键。 You can choose the column ``Intermediate count`` to watch the trial's progress.
 
 
 .. image:: ../../img/webui-img/addColumn.png
    :target: ../../img/webui-img/addColumn.png
-   :alt: 
+   :alt: addColumnGraph
 
 
 
-* 如果要比较某些 Trial，可选择并点击 "Compare" 来查看结果。
+* If you want to compare some trials, you can select them and then click ``Compare`` to see the results.
 
 
 .. image:: ../../img/webui-img/select-trial.png
    :target: ../../img/webui-img/select-trial.png
-   :alt: 
+   :alt: selectTrialGraph
 
 
 .. image:: ../../img/webui-img/compare.png
    :target: ../../img/webui-img/compare.png
-   :alt: 
+   :alt: compareTrialsGraph
 
 
 
@@ -170,16 +235,16 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/search-trial.png
    :target: ../../img/webui-img/search-trial.png
-   :alt: 
+   :alt: searchTrial
 
 
 
-* 可使用 "Copy as python" 按钮来拷贝 Trial 的参数。
+* You can use the button named ``Copy as python`` to copy the trial's parameters.
 
 
 .. image:: ../../img/webui-img/copyParameter.png
    :target: ../../img/webui-img/copyParameter.png
-   :alt: 
+   :alt: copyTrialParameters
 
 
 
@@ -188,7 +253,7 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/detail-pai.png
    :target: ../../img/webui-img/detail-pai.png
-   :alt: 
+   :alt: detailPai
 
 
 
@@ -197,7 +262,7 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/intermediate.png
    :target: ../../img/webui-img/intermediate.png
-   :alt: 
+   :alt: intermeidateGraph
 
 
 
@@ -206,5 +271,5 @@ Trial 可能在训练过程中有大量中间结果。 为了更清楚的理解�
 
 .. image:: ../../img/webui-img/kill-running.png
    :target: ../../img/webui-img/kill-running.png
-   :alt: 
+   :alt: killTrial
 

@@ -15,7 +15,7 @@
    pruner = LevelPruner(model, config_list)
    pruner.compress()
 
-op_type 为 'default' 表示模块类型为 PyTorch 定义在了 :githublink:`default_layers.py <src/sdk/pynni/nni/compression/pytorch/default_layers.py>` 。
+The 'default' op_type stands for the module types defined in :githublink:`default_layers.py <nni/compression/pytorch/default_layers.py>` for pytorch.
 
 因此 ``{ 'sparsity': 0.8, 'op_types': ['default'] }`` 表示 **所有指定 op_types 的层都会被压缩到 0.8 的稀疏度**。 当调用 ``pruner.compress()`` 时，模型会通过掩码进行压缩。随后还可以微调模型，此时 **被剪除的权重不会被更新**。
 

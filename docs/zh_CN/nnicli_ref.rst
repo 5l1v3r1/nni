@@ -5,10 +5,10 @@ NNI 客户端是 ``nnictl`` 的python API，提供了对常用命令的实现。
 
 .. code-block:: bash
 
-   from nni.experiment import Experiment
+   from nni.experiment import LegacyExperiment
 
    # 创建一个实验实例
-   exp = Experiment() 
+   exp = LegacyExperiment()
 
    # 开始一个实验，将实例与实验连接
    # 你也可以使用 `resume_experiment`, `view_experiment` 或者 `connect_experiment`
@@ -25,17 +25,3 @@ NNI 客户端是 ``nnictl`` 的python API，提供了对常用命令的实现。
 
    # 停止一个实验，将实例与实验断开
    exp.stop_experiment()
-
-参考
-----------
-
-..  autoclass:: nni.experiment.Experiment
-    :members:
-..  autoclass:: nni.experiment.TrialJob
-    :members:
-..  autoclass:: nni.experiment.TrialHyperParameters
-    :members:
-..  autoclass:: nni.experiment.TrialMetricData
-    :members:
-..  autoclass:: nni.experiment.TrialResult
-    :members:

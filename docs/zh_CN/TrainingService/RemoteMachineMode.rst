@@ -13,7 +13,7 @@ NNI 可以通过 SSH 在多个远程计算机上运行同一个 Experiment，称
   确保远程计算机的默认环境符合 Trial 代码的需求。 如果默认环境不符合要求，可以将设置脚本添加到 NNI 配置的 ``command`` 字段。
 
 * 
-  确保远程计算机能被运行 ``nnictl`` 命令的计算机通过 SSH 访问。 同时支持 SSH 的密码和密钥验证方法。 高级用法请参考 `实验配置参考 <../Tutorial/ExperimentConfig.rst>`__ 。
+  确保远程计算机能被运行 ``nnictl`` 命令的计算机通过 SSH 访问。 同时支持 SSH 的密码和密钥验证方法。 高级用法请参考 `machineList part of configuration <../Tutorial/ExperimentConfig.rst>`__ 。
 
 * 
   确保每台计算机上的 NNI 版本一致。
@@ -25,14 +25,14 @@ Linux
 ^^^^^
 
 
-* 按照 `安装教程 <../Tutorial/InstallationLinux.rst>`__  在远程计算机上安装 NNI 。
+* 按照 `installation <../Tutorial/InstallationLinux.rst>`__  在远程计算机上安装 NNI 。
 
 Windows
 ^^^^^^^
 
 
 * 
-  按照 `安装教程 <../Tutorial/InstallationLinux.rst>`__  在远程计算机上安装 NNI 。
+  按照 `installation <../Tutorial/InstallationLinux.rst>`__  在远程计算机上安装 NNI 。
 
 * 
   安装并启动 ``OpenSSH Server``。
@@ -217,3 +217,11 @@ Windows
    preCommand: command1 && command2 && command3
 
 **注意**：因为 ``preCommand`` 每次都会在其他命令之前执行，所以强烈建议不要设置 **preCommand** 来对系统进行更改，即 ``mkdir`` or ``touch``.
+
+Remote machine supports running experiment in reuse mode. In this mode, NNI will reuse remote machine jobs to run as many as possible trials. It can save time of creating new jobs. User needs to make sure each trial can run independent in the same job, for example, avoid loading checkpoint from previous trials.  
+Follow the setting to enable reuse mode:
+
+.. code-block:: yaml
+
+   remoteConfig:
+     reuse: true
